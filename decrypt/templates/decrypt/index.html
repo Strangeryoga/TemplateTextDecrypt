@@ -1,0 +1,26 @@
+<!-- decrypt/templates/decrypt/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decrypt HTML</title>
+</head>
+<body>
+    <h1 style="color: black;">Content</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <textarea name="input_text" rows="10" cols="80" placeholder="Enter encrypted content here...">{{ input_text }}</textarea><br>
+        <button type="submit" name="decrypt_button">Decrypt</button>
+    </form>
+
+    {% if decrypted_text %}
+        <hr>
+        <h1 style="color: black;">Display:</h1>
+        <div>
+            <!-- Render HTML content -->
+            {{ decrypted_text|safe }}
+        </div>
+    {% endif %}
+</body>
+</html>
